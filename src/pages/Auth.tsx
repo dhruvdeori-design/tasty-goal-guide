@@ -18,7 +18,7 @@ const Auth = () => {
 
   // Redirect if already authenticated
   if (user && !loading) {
-    return <Navigate to="/onboarding" replace />;
+    return <Navigate to="/dashboard" replace />;
   }
 
   const handleGoogleAuth = async () => {
