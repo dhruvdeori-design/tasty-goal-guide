@@ -4,24 +4,22 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/hooks/useAuth";
-import { ProtectedRoute } from "@/components/ProtectedRoute";
-import { DashboardLayout } from "@/components/layouts/dashboard-layout";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Onboarding from "./pages/Onboarding";
 import NotFound from "./pages/NotFound";
 import Dashboard from "./pages/Dashboard";
+import Goals from "./pages/Goals";
+import Achievements from "./pages/Achievements";
+import Settings from "./pages/Settings";
+import { withDashboardLayout } from "@/components/withDashboardLayout";
+
+const DashboardPage = withDashboardLayout(Dashboard);
+const GoalsPage = withDashboardLayout(Goals);
+const AchievementsPage = withDashboardLayout(Achievements);
+const SettingsPage = withDashboardLayout(Settings);
 
 const queryClient = new QueryClient();
-
-// Wrap component with DashboardLayout for protected routes
-const withDashboardLayout = (Component: React.ComponentType) => (
-  <ProtectedRoute>
-    <DashboardLayout>
-      <Component />
-    </DashboardLayout>
-  </ProtectedRoute>
-);
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -34,35 +32,10 @@ const App = () => (
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/onboarding" element={<Onboarding />} />
-            <Route path="/dashboard" element={withDashboardLayout(Dashboard)} />
-            {/* Placeholder routes for navigation items */}
-            <Route 
-              path="/goals" 
-              element={withDashboardLayout(() => (
-                <div className="container">
-                  <h1 className="text-2xl font-bold mb-6">Goals</h1>
-                  <p>Goals page coming soon...</p>
-                </div>
-              ))} 
-            />
-            <Route 
-              path="/achievements" 
-              element={withDashboardLayout(() => (
-                <div className="container">
-                  <h1 className="text-2xl font-bold mb-6">Achievements</h1>
-                  <p>Achievements page coming soon...</p>
-                </div>
-              ))} 
-            />
-            <Route 
-              path="/settings" 
-              element={withDashboardLayout(() => (
-                <div className="container">
-                  <h1 className="text-2xl font-bold mb-6">Settings</h1>
-                  <p>Settings page coming soon...</p>
-                </div>
-              ))} 
-            />
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/goals" element={<GoalsPage />} />
+            <Route path="/achievements" element={<AchievementsPage />} />
+            <Route path="/settings" element={<SettingsPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
