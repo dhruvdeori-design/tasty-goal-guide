@@ -22,6 +22,8 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
+          glow: "hsl(var(--primary-glow))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -47,16 +49,43 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
+        // Goal-based colors
+        goals: {
+          'weight-loss': "hsl(var(--weight-loss))",
+          'weight-loss-foreground': "hsl(var(--weight-loss-foreground))",
+          'muscle-building': "hsl(var(--muscle-building))",
+          'muscle-building-foreground': "hsl(var(--muscle-building-foreground))",
+          'healthy-living': "hsl(var(--healthy-living))",
+          'healthy-living-foreground': "hsl(var(--healthy-living-foreground))",
+          'quick-meals': "hsl(var(--quick-meals))",
+          'quick-meals-foreground': "hsl(var(--quick-meals-foreground))",
+          'family-cooking': "hsl(var(--family-cooking))",
+          'family-cooking-foreground': "hsl(var(--family-cooking-foreground))",
         },
+        // Food category colors
+        food: {
+          vegetables: "hsl(var(--vegetables))",
+          proteins: "hsl(var(--proteins))",
+          grains: "hsl(var(--grains))",
+          dairy: "hsl(var(--dairy))",
+          spices: "hsl(var(--spices))",
+        },
+      },
+      backgroundImage: {
+        'gradient-primary': 'var(--gradient-primary)',
+        'gradient-weight-loss': 'var(--gradient-weight-loss)',
+        'gradient-muscle-building': 'var(--gradient-muscle-building)',
+        'gradient-healthy-living': 'var(--gradient-healthy-living)',
+        'gradient-quick-meals': 'var(--gradient-quick-meals)',
+        'gradient-family-cooking': 'var(--gradient-family-cooking)',
+      },
+      boxShadow: {
+        'elegant': 'var(--shadow-elegant)',
+        'glow': 'var(--shadow-glow)',
+        'card': 'var(--shadow-card)',
+      },
+      transitionTimingFunction: {
+        'smooth': 'var(--transition-smooth)',
       },
       borderRadius: {
         lg: "var(--radius)",
